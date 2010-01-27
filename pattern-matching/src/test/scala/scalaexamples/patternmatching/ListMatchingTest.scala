@@ -38,18 +38,19 @@ class ListMatchingTest extends EmptyTest  {
     assertEquals(list(1), mathedElement)
   }
 
-  
-  // @Test 
+
+  @Test
   def matchNestedLists {
-	val nestedList = list :: List("Indeed", "it", "is")
-	// Same as List(List(Scala, is, powerful), Indeed, it, is) 
- 
-	// A side note here. If you want only one list use "list ::: List("Indeed", "it", "is")" 
-	// Which prepends the entire list.
-                                       
-	// You must find the sublist to make the test pass.
+    val nestedList = list :: List("Indeed", "it", "is")
+    // Same as List(List(Scala, is, powerful), Indeed, it, is)
+
+    // A side note here. If you want only one list use "list ::: List("Indeed", "it", "is")"
+    // Which prepends the entire list.
+
+    // You must find the sublist to make the test pass.
     val mathedElement = nestedList match {
-      // Insert you match statement here
+    // Insert you match statement here
+      case List(liste, _*) => liste
       case _ => "failed"
     }
 
