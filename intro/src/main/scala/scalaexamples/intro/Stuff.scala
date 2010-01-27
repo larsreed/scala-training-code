@@ -15,6 +15,9 @@ class Stuff {
   def sayHello(in: String) = "Hello " + in
   
   // Deine a method which prints hello, returning Unit (void)
+  def printHello(in: String) {
+    println("Hello " + in)
+  }
 
 }
 

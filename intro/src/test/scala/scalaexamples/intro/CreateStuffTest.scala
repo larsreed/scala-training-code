@@ -51,11 +51,11 @@ class CreateStuffTest extends EmptyTest {
     assertEquals("Hello Alf", stuff.sayHello("Alf"))
   }
 
-  // @Test
+  @Test
   def testPrintHello {
     // Make this compile and run
     
-    // assertEquals((), stuff.printHello("Alf"))
+    assertEquals((), stuff.printHello("Alf"))
   }
   
 }
