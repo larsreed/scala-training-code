@@ -44,11 +44,11 @@ class CreateStuffTest extends EmptyTest {
     assertEquals("StuffObject", Stuff.getString)
   }
   
-  // @Test
+  @Test
   def testSayHello {
     // Make this compile and run
     
-    // assertEquals("Hello Alf", stuff.sayHello("Alf"))
+    assertEquals("Hello Alf", stuff.sayHello("Alf"))
   }
 
   // @Test

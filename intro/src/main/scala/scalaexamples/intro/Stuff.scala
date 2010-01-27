@@ -12,6 +12,7 @@ class Stuff {
   var variable = "This is a variable"
   
   // Define a method saying "Hello " to whatever input
+  def sayHello(in: String) = "Hello " + in
   
   // Deine a method which prints hello, returning Unit (void)
 
