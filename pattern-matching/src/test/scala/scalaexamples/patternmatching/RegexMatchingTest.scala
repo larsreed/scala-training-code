@@ -9,7 +9,7 @@ import scalaexamples.EmptyTest
 @RunWith(classOf[JUnit4])
 class RegexMatchingTest extends EmptyTest {
   
-  // @Test 
+  @Test 
   def matchEntireString {
     val string = "This is the string to find a match for."
     
@@ -24,34 +24,36 @@ class RegexMatchingTest extends EmptyTest {
     
     val mathedElement = string match {
       // Insert you match statement here
+      case matchRegex(hit) => hit
       case _ => "Failed"
     }
     
     assertEquals(string, mathedElement)
   }
   
-  // @Test 
+  @Test
   def matchFirstPartOfString {
     val start = "This is"
     val string = start + " the string to find a match for."
-    val matchRegex = """^(\w+\s\w+).*""".r
+    val matchRegex = """^(\w+\s\w+)(.*)""".r
     
     val mathedElement = string match {
       // Insert you match statement here
+      case matchRegex(hit, _) => hit
       case _ => "Failed"
     }
     
     assertEquals(start, mathedElement)
   }
   
-  // @Test 
+  @Test
   def matchFirstAndLastWordOfString {
     val start = "This"
     val end = "for"
     val string = start + " is the string to find a match " + end
     
     // Create a regular expression which will make the folliwing match and assertions correct.
-    val matchRegex = """""".r
+    val matchRegex = """^(\w+)\s.*\s(\w+)""".r
     
     val (first, last) = string match {
       case matchRegex(firstElement, lastElement) => (firstElement, lastElement)
@@ -61,24 +63,24 @@ class RegexMatchingTest extends EmptyTest {
     assertEquals(start, first)
     assertEquals(end, last)
   }
-  
-  // @Test 
+
+  @Test
   def matchEmails {
-    
+
     // Create a regex which identifies email (may be really simple)
-	// val emailRegex = """([^@]+)@(.+)""".r
+    // val emailRegex = """([^@]+)@(.+)""".r
     // You may use the regex above.
-	val emailRegex = """""".r
-    
+    val emailRegex = """([^@]+)@(.*)""".r
+
     def isValidEmail(stringToTest: String) = stringToTest match {
       // Insert you match statement here
+      case emailRegex(_, _) => true
       case _ => false
     }
 
     assertTrue(isValidEmail("aks@knowit.no"))
     assertTrue(isValidEmail("alf.kristian@gmail.com"))
     assertFalse(isValidEmail("fvr_at_knowit.no"))
-    
   }
 
 }
