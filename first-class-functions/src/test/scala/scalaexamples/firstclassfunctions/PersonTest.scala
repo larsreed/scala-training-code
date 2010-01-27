@@ -58,11 +58,14 @@ class PersonTest extends EmptyTest {
     assertEquals(List(johannes), kids)
   }
 
-  // @Test
+  @Test
   def testHasMultipleEmails {
     // Split the list of persons into two new lists containing
     // techies (more than one email address) and luddites (zero or only one email address)
-    val (techies, luddites) = (Nil, Nil)
+    // val (techies, luddites) = persons.partition(_.emailAddresses.length > 1)
+    val (techies, luddites) = persons.partition((p:Person) =>
+      p.emailAddresses.length > 1
+    )
 
     assertEquals(List(fredrik), techies)
     assertEquals(List(alf, johannes), luddites)
