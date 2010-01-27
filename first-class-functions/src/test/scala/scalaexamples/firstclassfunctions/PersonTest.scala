@@ -110,7 +110,7 @@ class PersonTest extends EmptyTest {
     }
   }
 
-  // @Test
+  @Test
   def testFindPersonByEmail {
     // Find the person who has the e-mail address "fvr@knowit.no".
     
@@ -118,7 +118,10 @@ class PersonTest extends EmptyTest {
     // there exists an email address matching the criteria in the
     // person's list of email addresses.
     val address = EmailAddress("fredrik@vraalsen.no")
-    val person: Option[Person] = null
+    val person: Option[Person] = persons.find((p:Person) =>
+      p.emailAddresses.exists((e: EmailAddress) => e == address)
+    )
+    // val person: Option[Person] = persons.find(_.emailAddresses.exists(_ == address))
     
     person match {
       case Some(person) => assertEquals(fredrik, person)
