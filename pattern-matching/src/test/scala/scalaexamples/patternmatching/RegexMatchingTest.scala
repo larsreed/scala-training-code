@@ -31,14 +31,15 @@ class RegexMatchingTest extends EmptyTest {
     assertEquals(string, mathedElement)
   }
   
-  // @Test 
+  @Test
   def matchFirstPartOfString {
     val start = "This is"
     val string = start + " the string to find a match for."
-    val matchRegex = """^(\w+\s\w+).*""".r
+    val matchRegex = """^(\w+\s\w+)(.*)""".r
     
     val mathedElement = string match {
       // Insert you match statement here
+      case matchRegex(hit, _) => hit
       case _ => "Failed"
     }
     
