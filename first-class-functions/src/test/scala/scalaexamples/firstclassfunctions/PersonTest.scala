@@ -129,7 +129,7 @@ class PersonTest extends EmptyTest {
     }
   }
   
-  // @Test
+  @Test
   def testGetFirstEmailAddress {
     // Create a new list of the first e-mail address of each person,
     // filtering out persons without e-mail addresses. 
@@ -137,7 +137,9 @@ class PersonTest extends EmptyTest {
     // Hint: Try combining filtering the list and then 
     // mapping it to a different type, only getting
     // the head of the email address list.
-    val addresses = Nil
+    val addresses = persons.filter((p:Person) =>
+      !p.emailAddresses.isEmpty
+    ).map((p:Person) => p.emailAddresses.head)
 
     assertEquals(List(alf.emailAddresses.head, fredrik.emailAddresses.head), addresses)
   }
