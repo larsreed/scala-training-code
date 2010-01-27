@@ -30,10 +30,11 @@ class PersonTest extends EmptyTest {
     assertEquals(List(alf, fredrik), adults)
   }
 
-  // @Test
+  @Test
   def testName {
     // Find the names of all persons
-    val names = Nil
+    // val names = persons.map((p:Person) => p.name)
+    val names = persons.map(_.name)
     
     assertEquals(List("Alf", "Fredrik", "Johannes"), names)
   }
