@@ -46,14 +46,14 @@ class RegexMatchingTest extends EmptyTest {
     assertEquals(start, mathedElement)
   }
   
-  // @Test 
+  @Test
   def matchFirstAndLastWordOfString {
     val start = "This"
     val end = "for"
     val string = start + " is the string to find a match " + end
     
     // Create a regular expression which will make the folliwing match and assertions correct.
-    val matchRegex = """""".r
+    val matchRegex = """^(\w+)\s.*\s(\w+)""".r
     
     val (first, last) = string match {
       case matchRegex(firstElement, lastElement) => (firstElement, lastElement)
