@@ -21,10 +21,11 @@ class PersonTest extends EmptyTest {
 
   val persons = List(alf, fredrik, johannes)
 
-  // @Test
+  @Test
   def testAdults {
     // Filter the list of persons to find all adults
-    val adults = Nil
+    // val adults = persons.filter(_.age > 18)
+    val adults = persons.filter((p:Person) => p.age > 18)
 
     assertEquals(List(alf, fredrik), adults)
   }
