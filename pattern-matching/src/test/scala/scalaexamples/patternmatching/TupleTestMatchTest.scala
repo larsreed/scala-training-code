@@ -32,12 +32,13 @@ class TupleTestMatchTest extends EmptyTest {
     }
   }
 
-  // @Test
-  def matchOnLargerTuple{
+  @Test
+  def matchOnLargerTuple {
     val simpleTuple: Any = (1, "string", false)
     
     simpleTuple match {
       // Match on the tuple, and assert with assertFalse(three)
+      case (one, two, three:Boolean) => assertFalse(three)
       case (one, two, three: String) => error("this is not a Tuple3 with last element Boolean")
       case _ => error("Couldnt match it")
     }
