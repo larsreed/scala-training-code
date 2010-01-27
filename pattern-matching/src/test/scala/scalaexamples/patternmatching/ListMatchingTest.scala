@@ -11,12 +11,13 @@ class ListMatchingTest extends EmptyTest  {
 
   val list = List("Scala", "is", "powerful")
   
-  // @Test
+  @Test
   def matchFirstElementOfList {
     
     // matchedElement must find the first element. It can also skip the rest (if you want to)
     val mathedElement = list match {
       // Insert you match statement(s) here
+      case List(first, _*) => first
       case _ => "failed"
     }
     
