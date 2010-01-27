@@ -144,7 +144,7 @@ class PersonTest extends EmptyTest {
     assertEquals(List(alf.emailAddresses.head, fredrik.emailAddresses.head), addresses)
   }
 
-  // @Test
+  @Test
   def testNameToEmailAddress {
     // Create a map from each persons name to their e-mail addresses,
     // filtering out persons without e-mail addresses
@@ -152,7 +152,11 @@ class PersonTest extends EmptyTest {
     val emptyMap: Map[String, List[EmailAddress]] = Map()
     
     // Insert code here for emptyMap
-    val nameToEmail = emptyMap
+    val nameToEmail = persons.filter((p:Person) =>
+      !p.emailAddresses.isEmpty
+    ).foldLeft(emptyMap)((m:Map[String, List[EmailAddress]], p:Person) =>
+      m + (p.name -> p.emailAddresses)
+    )
 
     assertEquals(Map(alf.name -> alf.emailAddresses, fredrik.name -> fredrik.emailAddresses), nameToEmail)
   }
