@@ -3,6 +3,7 @@ package scalaexamples.intro
 class Stuff {
   
   // Override the toString method to say "Stuff"
+  override def toString = "Stuff"
   
   // Define a constant 'const' saying "This is a constant"
   
