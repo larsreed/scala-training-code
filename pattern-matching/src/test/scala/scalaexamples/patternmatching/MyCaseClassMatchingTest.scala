@@ -9,12 +9,13 @@ import scalaexamples.EmptyTest
 @RunWith(classOf[JUnit4])
 class MyCaseClassMatchingTest extends EmptyTest {
   
-  // @Test 
+  @Test
   def matchMySuperType {
      val theClass: Any = FirstSubClass(1)
      
      val found = theClass match {
        // Add a match expression which return true
+       case m: MyCaseClass => true
        case _ => false
      }
      assertTrue(found)
