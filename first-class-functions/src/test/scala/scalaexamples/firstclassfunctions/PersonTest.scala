@@ -39,11 +39,11 @@ class PersonTest extends EmptyTest {
     assertEquals(List("Alf", "Fredrik", "Johannes"), names)
   }
 
-  // @Test
+  @Test
   def testNamesOfAdults {
     // Create a list containing the names of the adults,
     // by combining the approaches in the two exercies above
-    val names = Nil
+    val names = persons.filter(_.age > 18).map(_.name)
 
     assertEquals(List("Alf", "Fredrik"), names)
   }
