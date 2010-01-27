@@ -10,5 +10,9 @@ import scalaexamples.EmptyTest
 class MyFirstTest extends EmptyTest{
   
   // Define a test. Make it fail, and then make it pass
+  @Test
+  def failing {
+    assertEquals("fail", "pass")
+  }
 
 }
