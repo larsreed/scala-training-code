@@ -95,13 +95,14 @@ class PersonTest extends EmptyTest {
     }
   }
 
-  // @Test
+  @Test
   def testFindEmailAddressesByName {
     // Find the e-mail addresses of the person named "Alf". 
     // Here you must first find the person, 
     // then map the collection to a different type
     val name = "Alf"
-    val addresses: Option[List[EmailAddress]] = null
+    // val addresses: Option[List[EmailAddress]] = persons.find(_.name == name).map(_.emailAddresses)
+    val addresses: Option[List[EmailAddress]] = persons.find((p:Person) => p.name == name).map((p:Person) => p.emailAddresses)
     
     addresses match {
       case Some(addresses) => assertEquals(alf.emailAddresses, addresses)
