@@ -21,11 +21,15 @@ class MyCaseClassMatchingTest extends EmptyTest {
      assertTrue(found)
   }
   
-  // @Test 
+  @Test
   def matchSubType {
      
      def matchSubType(myType: MyCaseClass) = myType match {
        // Add match expressions which make the following code pass.
+       case FirstSubClass(value) => value
+       case SecondSubClass(s) => s
+       case ThirdSubClass(_, liste) => liste
+       case FourthSubClass(_, FirstSubClass(value)) => value
        case _ => error("Should never reach this")
      }
 
