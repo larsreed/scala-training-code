@@ -51,12 +51,13 @@ class MyCaseClassMatchingTest extends EmptyTest {
      assertEquals(11, foundElement)
   }
   
-  // @Test 
+  @Test
   def matchWithExplicitType {
      val theClass: MyCaseClass = FourthSubClass("verdi", FirstSubClass(11))
 
      val foundElement: Option[FirstSubClass] = theClass match {
        // Add a match expression which make the following assertion true. Use Option type
+       case FourthSubClass(_, sub) => Some(sub)
        case _ => None
      }
      
