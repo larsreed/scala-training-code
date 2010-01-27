@@ -26,14 +26,14 @@ class CreateStuffTest extends EmptyTest {
   	// stuff.const = "Must give compile error"
   }
   
-  // @Test
+  @Test
   def changeVar {
     // Make this compile and run 
     
-    // assertEquals("This is a variable", stuff.variable)
+    assertEquals("This is a variable", stuff.variable)
     val text = "Changed it"
-    // stuff.variable = text
-    // assertEquals(text, stuff.variable)
+    stuff.variable = text
+    assertEquals(text, stuff.variable)
     ()
   }
   

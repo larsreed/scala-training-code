@@ -9,6 +9,7 @@ class Stuff {
   val const = "This is a constant"
   
   // Define a variable 'variable' saying "This is a variable"
+  var variable = "This is a variable"
   
   // Define a method saying "Hello " to whatever input
   
