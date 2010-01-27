@@ -24,13 +24,14 @@ class ListMatchingTest extends EmptyTest  {
     assertEquals(list(0), mathedElement)
   }
   
-  // @Test 
+  @Test
   def matchSecondElementOfList {
     
     // matchedElement should find the second element of the list. 
     // You may ignore the first element and any subsequent elements if you want
     val mathedElement = list match {
       // Insert you match statement here
+      case List(_, second, _*) => second
       case _ => "failed"
     }
 
