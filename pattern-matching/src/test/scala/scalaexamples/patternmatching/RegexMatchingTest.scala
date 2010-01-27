@@ -9,7 +9,7 @@ import scalaexamples.EmptyTest
 @RunWith(classOf[JUnit4])
 class RegexMatchingTest extends EmptyTest {
   
-  // @Test 
+  @Test 
   def matchEntireString {
     val string = "This is the string to find a match for."
     
@@ -24,6 +24,7 @@ class RegexMatchingTest extends EmptyTest {
     
     val mathedElement = string match {
       // Insert you match statement here
+      case matchRegex(hit) => hit
       case _ => "Failed"
     }
     
