@@ -48,11 +48,11 @@ class PersonTest extends EmptyTest {
     assertEquals(List("Alf", "Fredrik"), names)
   }
 
-  // @Test
+  @Test
   def testAgeLimit {
     // Partition the list of persons into two new lists,
     // one containing the adults and one containing the kids
-    val (adults, kids) = (Nil, Nil)
+    val (adults, kids) = persons.partition(_.age > 18)
 
     assertEquals(List(alf, fredrik), adults)
     assertEquals(List(johannes), kids)
