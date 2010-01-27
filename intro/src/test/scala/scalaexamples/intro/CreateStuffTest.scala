@@ -37,11 +37,11 @@ class CreateStuffTest extends EmptyTest {
     ()
   }
   
-  // @Test
+  @Test
   def accessStuffObject {
     // Make this compile and run
     
-    //assertEquals("StuffObject", Stuff.getString)
+    assertEquals("StuffObject", Stuff.getString)
   }
   
   // @Test

@@ -20,5 +20,6 @@ class Stuff {
 object Stuff {
   
   // Define a method that returns "StuffObject"
+  def getString = "StuffObject"
   
 }
