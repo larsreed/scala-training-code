@@ -71,11 +71,11 @@ class PersonTest extends EmptyTest {
     assertEquals(List(alf, johannes), luddites)
   }
 
-  // @Test
+  @Test
   def testFindByName {
     // Find the person named "Johannes" in the list of persons
     val name = "Johannes"
-    val person: Option[Person] = null
+    val person: Option[Person] = persons.find(_.name == name)
     
     person match {
       case Some(person) => assertEquals(johannes, person)
