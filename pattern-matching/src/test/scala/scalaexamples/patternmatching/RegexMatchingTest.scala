@@ -63,24 +63,24 @@ class RegexMatchingTest extends EmptyTest {
     assertEquals(start, first)
     assertEquals(end, last)
   }
-  
-  // @Test 
+
+  @Test
   def matchEmails {
-    
+
     // Create a regex which identifies email (may be really simple)
-	// val emailRegex = """([^@]+)@(.+)""".r
+    // val emailRegex = """([^@]+)@(.+)""".r
     // You may use the regex above.
-	val emailRegex = """""".r
-    
+    val emailRegex = """([^@]+)@(.*)""".r
+
     def isValidEmail(stringToTest: String) = stringToTest match {
       // Insert you match statement here
+      case emailRegex(_, _) => true
       case _ => false
     }
 
     assertTrue(isValidEmail("aks@knowit.no"))
     assertTrue(isValidEmail("alf.kristian@gmail.com"))
     assertFalse(isValidEmail("fvr_at_knowit.no"))
-    
   }
 
 }
