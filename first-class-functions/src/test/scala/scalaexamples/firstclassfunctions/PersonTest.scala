@@ -83,11 +83,11 @@ class PersonTest extends EmptyTest {
     }
   }
   
-  // @Test
+  @Test
   def testFindByName2 {
     // Find the person named "Jon-Anders" (should not match)
     val name = "Jon-Anders"
-    val person: Option[Person] = null
+    val person: Option[Person] = persons.find(_.name == name)
 
     person match {
       case None => "OK"
