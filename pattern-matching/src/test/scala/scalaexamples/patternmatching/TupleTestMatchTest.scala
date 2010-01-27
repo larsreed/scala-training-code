@@ -9,12 +9,13 @@ import scalaexamples.EmptyTest
 @RunWith(classOf[JUnit4])
 class TupleTestMatchTest extends EmptyTest {
   
-  // @Test
+  @Test
   def matchOnTupes {
     val simpleTuple: Any = (1, "string")
 
     simpleTuple match {
       // Match on the tuple, and assert that its the same => assertEquals(simpleTuple, (one, two))
+      case (one, two) => assertEquals(simpleTuple, (one, two))
       case _ => error("Couldnt match it")
     }
   }
