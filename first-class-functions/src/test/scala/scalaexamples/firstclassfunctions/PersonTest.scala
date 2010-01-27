@@ -21,56 +21,61 @@ class PersonTest extends EmptyTest {
 
   val persons = List(alf, fredrik, johannes)
 
-  // @Test
+  @Test
   def testAdults {
     // Filter the list of persons to find all adults
-    val adults = Nil
+    // val adults = persons.filter(_.age > 18)
+    val adults = persons.filter((p:Person) => p.age > 18)
 
     assertEquals(List(alf, fredrik), adults)
   }
 
-  // @Test
+  @Test
   def testName {
     // Find the names of all persons
-    val names = Nil
+    // val names = persons.map((p:Person) => p.name)
+    val names = persons.map(_.name)
     
     assertEquals(List("Alf", "Fredrik", "Johannes"), names)
   }
 
-  // @Test
+  @Test
   def testNamesOfAdults {
     // Create a list containing the names of the adults,
     // by combining the approaches in the two exercies above
-    val names = Nil
+    val names = persons.filter(_.age > 18).map(_.name)
 
     assertEquals(List("Alf", "Fredrik"), names)
   }
 
-  // @Test
+  @Test
   def testAgeLimit {
     // Partition the list of persons into two new lists,
     // one containing the adults and one containing the kids
-    val (adults, kids) = (Nil, Nil)
+    val (adults, kids) = persons.partition(_.age > 18)
 
     assertEquals(List(alf, fredrik), adults)
     assertEquals(List(johannes), kids)
   }
 
-  // @Test
+  @Test
   def testHasMultipleEmails {
     // Split the list of persons into two new lists containing
     // techies (more than one email address) and luddites (zero or only one email address)
-    val (techies, luddites) = (Nil, Nil)
+    // val (techies, luddites) = persons.partition(_.emailAddresses.length > 1)
+    val (techies, luddites) = persons.partition((p:Person) =>
+      p.emailAddresses.length > 1
+    )
 
     assertEquals(List(fredrik), techies)
     assertEquals(List(alf, johannes), luddites)
   }
 
-  // @Test
+  @Test
   def testFindByName {
     // Find the person named "Johannes" in the list of persons
     val name = "Johannes"
-    val person: Option[Person] = null
+    val person: Option[Person] = persons.find(_.name == name)
     
     person match {
       case Some(person) => assertEquals(johannes, person)
@@ -78,11 +83,11 @@ class PersonTest extends EmptyTest {
     }
   }
   
-  // @Test
+  @Test
   def testFindByName2 {
     // Find the person named "Jon-Anders" (should not match)
     val name = "Jon-Anders"
-    val person: Option[Person] = null
+    val person: Option[Person] = persons.find(_.name == name)
 
     person match {
       case None => "OK"
@@ -90,13 +95,14 @@ class PersonTest extends EmptyTest {
     }
   }
 
-  // @Test
+  @Test
   def testFindEmailAddressesByName {
     // Find the e-mail addresses of the person named "Alf". 
     // Here you must first find the person, 
     // then map the collection to a different type
     val name = "Alf"
-    val addresses: Option[List[EmailAddress]] = null
+    // val addresses: Option[List[EmailAddress]] = persons.find(_.name == name).map(_.emailAddresses)
+    val addresses: Option[List[EmailAddress]] = persons.find((p:Person) => p.name == name).map((p:Person) => p.emailAddresses)
     
     addresses match {
       case Some(addresses) => assertEquals(alf.emailAddresses, addresses)
@@ -104,7 +110,7 @@ class PersonTest extends EmptyTest {
     }
   }
 
-  // @Test
+  @Test
   def testFindPersonByEmail {
     // Find the person who has the e-mail address "fvr@knowit.no".
     
@@ -112,7 +118,10 @@ class PersonTest extends EmptyTest {
     // there exists an email address matching the criteria in the
     // person's list of email addresses.
     val address = EmailAddress("fredrik@vraalsen.no")
-    val person: Option[Person] = null
+    val person: Option[Person] = persons.find((p:Person) =>
+      p.emailAddresses.exists((e: EmailAddress) => e == address)
+    )
+    // val person: Option[Person] = persons.find(_.emailAddresses.exists(_ == address))
     
     person match {
       case Some(person) => assertEquals(fredrik, person)
@@ -120,7 +129,7 @@ class PersonTest extends EmptyTest {
     }
   }
   
-  // @Test
+  @Test
   def testGetFirstEmailAddress {
     // Create a new list of the first e-mail address of each person,
     // filtering out persons without e-mail addresses. 
@@ -128,12 +137,14 @@ class PersonTest extends EmptyTest {
     // Hint: Try combining filtering the list and then 
     // mapping it to a different type, only getting
     // the head of the email address list.
-    val addresses = Nil
+    val addresses = persons.filter((p:Person) =>
+      !p.emailAddresses.isEmpty
+    ).map((p:Person) => p.emailAddresses.head)
 
     assertEquals(List(alf.emailAddresses.head, fredrik.emailAddresses.head), addresses)
   }
 
-  // @Test
+  @Test
   def testNameToEmailAddress {
     // Create a map from each persons name to their e-mail addresses,
     // filtering out persons without e-mail addresses
@@ -141,7 +152,11 @@ class PersonTest extends EmptyTest {
     val emptyMap: Map[String, List[EmailAddress]] = Map()
     
     // Insert code here for emptyMap
-    val nameToEmail = emptyMap
+    val nameToEmail = persons.filter((p:Person) =>
+      !p.emailAddresses.isEmpty
+    ).foldLeft(emptyMap)((m:Map[String, List[EmailAddress]], p:Person) =>
+      m + (p.name -> p.emailAddresses)
+    )
 
     assertEquals(Map(alf.name -> alf.emailAddresses, fredrik.name -> fredrik.emailAddresses), nameToEmail)
   }
