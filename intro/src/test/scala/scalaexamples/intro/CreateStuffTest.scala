@@ -16,11 +16,11 @@ class CreateStuffTest extends EmptyTest {
     assertEquals("Stuff", stuff.toString)
   }
   
-  // @Test
+  @Test
   def accessVal {
     // Make this compile and run
     
-  	// assertEquals("This is a constant", stuff.const)
+  	assertEquals("This is a constant", stuff.const)
    
     // When commenting in the following line, you must get a compile error
   	// stuff.const = "Must give compile error"

@@ -6,6 +6,7 @@ class Stuff {
   override def toString = "Stuff"
   
   // Define a constant 'const' saying "This is a constant"
+  val const = "This is a constant"
   
   // Define a variable 'variable' saying "This is a variable"
   
