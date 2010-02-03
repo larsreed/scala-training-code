@@ -25,13 +25,15 @@ class DynamicMixinTest extends EmptyTest {
   }
   
   
-  // @Test 
+  @Test
   def mixInInterfaceTest {
     // Make the following compile and run (uncomment the code)
     // Hint you can open the class or subclass it right here.
     
-    // val myElement = new Element(0) with InterfaceTrait
-    // assertNotNull(myElement.getSomeString)
+    val myElement = new Element(0) with InterfaceTrait {
+      def getSomeString = "some string"
+    }
+    assertNotNull(myElement.getSomeString)
   }
   
   
