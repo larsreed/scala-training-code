@@ -9,16 +9,18 @@ import scalaexamples.EmptyTest
 @RunWith(classOf[JUnit4])
 class DynamicMixinTest extends EmptyTest {
   
-  // @Test 
+  @Test
   def mixInTraitTest {
-    val myElement = new Element(0)
+    val myElement = new Element(0) with MethodTrait
     
     // Make the following compile and run. 
     // Hint this is easy to achieve by mixing in the correct 
     // trait right here when creating the instance of Element.
     
-    // assertEquals("a value", myElement.mixedInMethod)
-    val anotherElement = new Element(0) with MethodTrait
+    assertEquals("a value", myElement.mixedInMethod)
+    val anotherElement = new Element(0) with MethodTrait {
+      override def mixedInMethod = "another value"
+    }
     assertEquals("another value", anotherElement.mixedInMethod)
   }
   
