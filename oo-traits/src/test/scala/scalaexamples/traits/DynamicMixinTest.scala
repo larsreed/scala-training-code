@@ -37,14 +37,13 @@ class DynamicMixinTest extends EmptyTest {
   }
   
   
-  // @Test
+  @Test
   def stackableTraitTest {
     // Make the following run without assertion error.
     // Hint: extend ElementWithStackableTrait with Element and SubClassTrait
-    class ElementWithStackableTrait(value: Int)
+    class ElementWithStackableTrait(value: Int) extends Element(value) with SubClassTrait
     val element = new ElementWithStackableTrait(1)
     assertEquals("stacked toString, super toString is 'anIntValue is 1'", element.toString)
   }
-  
 
 }
