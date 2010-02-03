@@ -8,6 +8,17 @@ class PersonPartitioner {
   // returns two new lists, one with the persons for which the function returns true
   // and one with the persons for which the function returns false
   
-  // def partitionPersons(persons: List[Person], ...): (List[Person], List[Person]) = (Nil, Nil)
+  def partitionPersons(persons: List[Person], f: Person => Boolean): (List[Person], List[Person]) = {
+    persons match {
+      case p :: rest => {
+        val (ftrue, ffalse) = partitionPersons(rest, f)
+        if (f(p))
+          (p :: ftrue, ffalse)
+        else
+          (ftrue, p :: ffalse)
+      }
+      case Nil => (Nil, Nil)
+    }
+  }
 
 }
