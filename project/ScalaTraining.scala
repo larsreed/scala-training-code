@@ -2,7 +2,7 @@ import sbt._
 import Keys._
 
 object BuildSettings {
-  val junit = "junit" % "junit" % "4.8.1"
+  val junit = "junit" % "junit" % "4.11"
   val junitInterface = "com.novocode" % "junit-interface" % "0.7" % "test->default"
   
   val globalSettings = Seq(
@@ -29,6 +29,6 @@ object ScalaTraining extends Build {
   lazy val pattern_matching = Project("pattern_matching", file("pattern-matching"), settings = projectSettings) dependsOn (common)
 
   lazy val quiz = Project("quiz", file("quiz"),
-    settings = projectSettings ++ Seq(libraryDependencies ++= Seq("org.scala-lang" % "scala-library-all" % "2.11.2"))
+    settings = projectSettings ++ Seq(libraryDependencies ++= Seq("org.scala-lang.modules" %% "scala-swing" % "1.0.1", "org.scala-lang.modules" %% "scala-xml" % "1.0.2"))
   )
 }
