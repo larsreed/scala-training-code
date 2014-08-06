@@ -8,7 +8,7 @@ object BuildSettings {
   val globalSettings = Seq(
     organization := "no.scalabin.scala-examples",
     version := "0.1-SNAPSHOT",
-    scalaVersion := "2.10.2",
+    scalaVersion := "2.11.2",
     scalacOptions += "-deprecation",
     scalacOptions += "-feature",
     libraryDependencies ++= Seq(junit, junitInterface)
@@ -29,6 +29,6 @@ object ScalaTraining extends Build {
   lazy val pattern_matching = Project("pattern_matching", file("pattern-matching"), settings = projectSettings) dependsOn (common)
 
   lazy val quiz = Project("quiz", file("quiz"),
-    settings = projectSettings ++ Seq(libraryDependencies += "org.scala-lang" % "scala-swing" % "2.9.1")
+    settings = projectSettings ++ Seq(libraryDependencies ++= Seq("org.scala-lang" % "scala-library-all" % "2.11.2"))
   )
 }
