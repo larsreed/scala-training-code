@@ -1,7 +1,7 @@
 package scalaexamples.traits
 
 import junit.framework.Assert._
-import org.junit.Test
+import org.junit.{Ignore, Test}
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
@@ -10,10 +10,11 @@ import scalaexamples.EmptyTest
 
 @RunWith(classOf[JUnit4])
 class BasicTraitTest extends EmptyTest {
-  
+
   val list = List(new Element(10), new Element(2))
-  
-  @Test def mixInOrderedTraitTest {
+
+  @Test @Ignore
+  def mixInOrderedTraitTest {
       // Make the following compile (and run of course)
 	  // Hint implement the Ordered interface on the Element class
 
@@ -23,5 +24,5 @@ class BasicTraitTest extends EmptyTest {
 	  // assertFalse(list(0) < list(1))
 	  // assertFalse(list(0) <= list(1))
   }
-  
+
 }

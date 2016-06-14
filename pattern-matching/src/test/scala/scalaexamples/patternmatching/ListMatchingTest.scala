@@ -1,32 +1,33 @@
 package scalaexamples.patternmatching
 
 import junit.framework.Assert._
-import org.junit.Test
+import org.junit.{Ignore, Test}
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+
 import scalaexamples.EmptyTest
 
 @RunWith(classOf[JUnit4])
 class ListMatchingTest extends EmptyTest  {
 
   val list = List("Scala", "is", "powerful")
-  
-  // @Test
+
+  @Test @Ignore
   def matchFirstElementOfList {
-    
+
     // matchedElement must find the first element. It can also skip the rest (if you want to)
     val mathedElement = list match {
       // Insert you match statement(s) here
       case _ => "failed"
     }
-    
+
     assertEquals(list(0), mathedElement)
   }
-  
-  // @Test 
+
+  @Test @Ignore
   def matchSecondElementOfList {
-    
-    // matchedElement should find the second element of the list. 
+
+    // matchedElement should find the second element of the list.
     // You may ignore the first element and any subsequent elements if you want
     val mathedElement = list match {
       // Insert you match statement here
@@ -36,15 +37,15 @@ class ListMatchingTest extends EmptyTest  {
     assertEquals(list(1), mathedElement)
   }
 
-  
-  // @Test 
+
+  @Test @Ignore
   def matchNestedLists {
 	val nestedList = list :: List("Indeed", "it", "is")
-	// Same as List(List(Scala, is, powerful), Indeed, it, is) 
- 
-	// A side note here. If you want only one list use "list ::: List("Indeed", "it", "is")" 
+	// Same as List(List(Scala, is, powerful), Indeed, it, is)
+
+	// A side note here. If you want only one list use "list ::: List("Indeed", "it", "is")"
 	// Which prepends the entire list.
-                                       
+
 	// You must find the sublist to make the test pass.
     val mathedElement = nestedList match {
       // Insert you match statement here
@@ -53,12 +54,12 @@ class ListMatchingTest extends EmptyTest  {
 
     assertEquals(list, mathedElement)
   }
-  
-  // @Test 
+
+  @Test @Ignore
   def matchNestedElementOfList {
     val subList = List("Indeed", "it", "is")
 	val list = List("Scala", "is", "powerful", subList)
- 
+
 	// Here you must find the first element of the second sublist
     val mathedElement = list match {
       // Insert you match statement here
@@ -66,12 +67,12 @@ class ListMatchingTest extends EmptyTest  {
     }
     assertEquals(subList(0), mathedElement)
   }
-  
-    // @Test 
+
+  @Test @Ignore
   def matchNestedElementOfListWithHeadTailPatternMatching {
     val subList = List("Indeed", "it", "is")
 	val list = List("Scala", "is", "powerful", subList)
- 
+
 	// Here you must find the first element of the second sublist
 	// like in the example above but using head tail pattern matching
 	def findSublist(listOfList:List[Any]): String  = listOfList match {
@@ -79,7 +80,7 @@ class ListMatchingTest extends EmptyTest  {
       case _ => "failed"
     }
     val mathedElement = findSublist(list)
-    
+
     assertEquals(subList(0), mathedElement)
   }
 }

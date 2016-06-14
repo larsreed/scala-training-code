@@ -1,9 +1,10 @@
 package scalaexamples.higherorderfunctions
 
 import junit.framework.Assert._
-import org.junit.Test
+import org.junit.{Ignore, Test}
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+
 import scalaexamples.EmptyTest
 
 // Comment in the tests below and make them run and pass
@@ -19,7 +20,7 @@ class PersonPartitionerTest extends EmptyTest {
 
   val persons = alf :: fredrik :: johannes :: Nil
 
-  // @Test
+  @Test @Ignore
   def testAgeLimit {
     // Pass in a function that tests whether the person is an adult
     val (adults, kids) = (Nil, Nil) // partitioner.partitionPersons(persons, error(""))
@@ -28,7 +29,7 @@ class PersonPartitionerTest extends EmptyTest {
     assertEquals(List(johannes), kids)
   }
 
-  // @Test
+  @Test @Ignore
   def testHasMoreThanOneEmail {
     // Pass in a function that tests whether the person is
     // a techie (2 or more e-mail addresses) or a luddite (zero or one e-mail address)
